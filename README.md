@@ -28,6 +28,17 @@ The extension is built using:
 - JavaScript for functionality
 - Chrome Extension Manifest V3
 
+## Dependencies
+
+The extension relies on the following key dependencies:
+- [axe-core](https://github.com/dequelabs/axe-core) - A powerful accessibility testing engine
+- Chrome Extension APIs - For browser integration and DOM manipulation
+
+To install dependencies:
+```bash
+npm install
+```
+
 ## License
 
 MIT License 
