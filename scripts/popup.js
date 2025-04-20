@@ -19,11 +19,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
   checkContrastButton.addEventListener('click', async () => {
     try {
-      // Check if axe is available
-      if (typeof axe === 'undefined') {
-        throw new Error('Axe library not loaded. Please refresh the page and try again.');
-      }
-
       // Get the active tab
       const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
       
@@ -31,7 +26,13 @@ document.addEventListener('DOMContentLoaded', function() {
         throw new Error('No active tab found');
       }
 
-      // Execute script in the active tab
+      // First inject axe.js
+      await chrome.scripting.executeScript({
+        target: { tabId: tab.id },
+        files: ['lib/axe.min.js']
+      });
+
+      // Then execute the contrast check
       const results = await chrome.scripting.executeScript({
         target: { tabId: tab.id },
         function: checkPageContrast

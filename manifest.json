@@ -4,16 +4,6 @@
   "version": "1.0",
   "description": "A Chrome extension to check and alert about contrast ratios",
   "permissions": ["activeTab", "scripting"],
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["lib/axe.min.js"]
-    }
-  ],
-  "web_accessible_resources": [{
-    "resources": ["lib/axe.min.js"],
-    "matches": ["<all_urls>"]
-  }],
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
